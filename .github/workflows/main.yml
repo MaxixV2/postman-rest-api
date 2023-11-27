@@ -1,8 +1,6 @@
 name: Run petstore collection tests
 on:
   push:
-    branches:
-      - master
 jobs:
   test-api:
     runs-on: ubuntu-latest
@@ -29,10 +27,19 @@ jobs:
         with:
           name: report
           path: testResults
+  upload-artifacts:
+    runs-on: ubuntu-latest
+    needs: test-api
+    name: Report publication
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Download artifacts
+          uses: actions/download-artifacts@v2
+        - name: Deploy report to Github pages
+          uses: peaceiris/actions-gh-pages@v3
+          with: 
+            github_token: ${{ secrets.GITHUB_TOKEN}}
+            publish_branch: gh-pages
+            publish_dir: ./
 
-      - name: Deploy report to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with: 
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          publish_branch: gh-pages
-          publish_dir: ./testResults
