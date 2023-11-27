@@ -19,7 +19,7 @@ jobs:
 
       - name: Run petstore collection
         run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme || true
+          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/index.html --reporter-htmlextra-darkTheme || true
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
