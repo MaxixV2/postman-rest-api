@@ -1,6 +1,5 @@
 name: Run petstore collection tests
-on:
-  push:
+on: push
 jobs:
   test-api:
     runs-on: ubuntu-latest
