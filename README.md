@@ -1,54 +1,43 @@
-# Postman + newman + github actions (Simple store template)
+# Postman + Newman + GitHub Actions (Simple Store Template)
 
-<a href="https://drive.google.com/file/d/1LQ1uG7Tt70Jubuk5loS4dMSk-1AJ5jzz/view?usp=sharing" /> Intro </a>
+## Tasks
 
-## Task steps / First task
-1. Read: 
-- <a href="https://svitla.com/blog/testing-rest-api-with-postman-and-curl"> Postman & Curl & REST article </a> 
-- <a href="https://learning.postman.com/docs/writing-scripts/script-references/test-examples/">Postman tests examples (off doc)</a>
-- <a href="https://drive.google.com/file/d/1ftlfK91TXTS9GH7ufEXsGujop_LpC5ef/view?usp=sharing" /> Manual schema generation </a>
-2. Download this repo.
-3. Run `npm i` (install node.js dependencies)
-4. Run `npm run tern-on-api`(to run testing server locally )
+The description of the tasks is provided [here](https://github.com/WannaBeDream/Postman-newman-ghActions#readme).
 
-### Overview of local server testing
-Routes `/products`, `/orders` and `/users`. Below is a table of supported operations with `products` as example resource. The same operations are also supports for `orders/` and `users/`.
+**Requirements for completion of the tasks:**
+- Node.js
+- Postman
 
-| VERB     |Route          | Input      | Output             |
-|----------|---------------|------------|--------------------|
-| GET      | /products     | *None*     | **Array**          |
-| GET      | /products/:id |  **e.g 3** | **Object**         |
-| POST     | /products     | **object** | **Created object** |
-| PUT      | /products     | **object** | **Updated object** |
-| DELETE   | /products/:id | **e.g 3**  | **Deleted object** |
+### First Task
 
+**Steps:**
 
-5. Upload `store.collection.json` in Postman app. (skip this exhibit in case you decide to use another public API ) 
-6. Make some integration tests in Postman, could be status code/JSON check and so on. ( in case with another API - write tests based on another one).
+1. **Install:**
+    To run on the mock server, clone the repository:
+     ```bash
+     git clone https://github.com/MaxixV2/postman-rest-api.git
+     ```
+    Install dependencies:
+     ```bash
+     npm install
+     ```
 
-Examples:
-- Test pagination, by way like `http://localhost:3000/users?page=1&pageSize=2`. 
-- Test sorting, by way like `http://localhost:3000/users?sortOrder=ASC&sortKey=firstName`. You can sort an any resource response using query parameters sortOrder and sortKey.
--  Test status code for REST API (200,400 and so on).
--  Test response time.
--  Test response thanks to json schema validation.
--  Try to follow `AAA` approach (arrange, act, assert).
+2. **Run in Postman:**
+    Run the mock server:
+     ```bash
+     npm run tern-on-api
+     ```
+    Import the `store.postman_collection.json` file into Postman.
+    Open the "store" collection.
+    Click the "Run collection" after right-clicking on the store collection.
 
-7. Save new collection with your new integration tests with the same name as `store.collection.json`. ( in case with another API - another file name for json file)
-8. Push to you github repo in main branch ( in case with local server - save local server as well )
+   Example:
 
-###  GH actions practice / Second Task
-9. Add Github action to run `petstore.collection.json` in Github pages by <a href="https://www.linkedin.com/pulse/running-postman-collections-via-github-action-nirmala-jayasanka"> article </a> or use another GH action.
-10. Check github actions for result.
+   ![image](https://github.com/MaxixV2/postman-rest-api/assets/99399536/105ca357-79b2-4191-ae41-c113f82269e8)
 
 
-You can use another API to perform  your testing instead of local store API and `store.collection.json`. 
-- <a href="https://github.com/public-apis/public-apis"> Public API list </a>
+### Second Task
 
-### Usefull links (skip this)
-Examples with different actions in Postman workspace (only take a look once, no need to learn this) 
-- <a href="https://www.postman.com/postman/workspace/postman-answers"> Postman answers </a>
-- <a href="https://restfulapi.net"> REST API Tutorial </a>
+The report is deployed on the `gh-pages` branch. 
 
-Doc for json schema validation, to check output API response (only take a look once, no need to learn this doc) 
-- <a href="https://json-schema.org"> json schema docs </a>
+[Latest report](https://maxixv2.github.io/postman-rest-api/)
