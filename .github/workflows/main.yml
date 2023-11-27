@@ -1,4 +1,4 @@
-name: Test-Build
+name: Run petstore collection tests
 on:
   push:
     branches:
@@ -21,9 +21,8 @@ jobs:
         run: mkdir -p testResults
 
       - name: Run petstore collection
-        continue-on-error: true
         run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
+          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme || true
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
